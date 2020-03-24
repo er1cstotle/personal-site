@@ -6,19 +6,14 @@ import { grey, yellow } from '@material-ui/core/colors';
 
 import Avatar from 'components/avatar';
 
-import { AppBar, Container, Drawer, List, ListItem, ListItemText, Toolbar, IconButton, Tabs, Tab, Typography } from '@material-ui/core';
+import { AppBar, Container, Drawer, Hidden, IconButton, List, ListItem, ListItemText, Tab, Tabs, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import GitHub from '@material-ui/icons/GitHub';
 import Twitter from '@material-ui/icons/Twitter';
 
 const useStyles = makeStyles(theme => ({
-  appBar: {
-    backgroundColor: grey[900]
-  },
   tabs: {
-    display: 'none',
     [theme.breakpoints.up('sm')]: {
-      display: 'flex',
       flexGrow: 1
     },
     paddingLeft: 16
@@ -44,16 +39,7 @@ const useStyles = makeStyles(theme => ({
     minWidth: 250
   },
   menuButton: {
-    display: 'flex',
-    [theme.breakpoints.up('sm')]: {
-      display: 'none'
-    }
-  },
-  socialIcon: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'inline-flex'
-    }
+    display: 'flex'
   }
 }));
 
@@ -68,16 +54,14 @@ const ListItemLink = (props) => {
   return <ListItem button component={Link} {...props} />;
 };
 
-
 const pages = [
-  { name: 'Home', path: '/' },
-  { name: 'Projects', path: '/projects/' },
-  { name: 'Dev Stuff', path: '/dev-stuff/' },
-  { name: 'Reading', path: '/reading/' },
-  { name: 'Listening', path: '/listening/' },
-  { name: 'Essentials', path: '/essentials/' }
+  { name: 'Home', to: '/', path: '/' },
+  { name: 'Projects', to: '/projects', path: '/projects/' },
+  { name: 'Dev Stuff', to: '/dev-stuff', path: '/dev-stuff/' },
+  { name: 'Reading', to: '/reading', path: '/reading/' },
+  { name: 'Listening', to: '/listening', path: '/listening/' },
+  { name: 'Essentials', to: '/essentials', path: '/essentials/' }
 ];
-
 
 const Header = (props) => {
   const classes = useStyles();
@@ -94,48 +78,55 @@ const Header = (props) => {
   });
 
   return (
-    <AppBar position="static" className={classes.appBar}>
+    <AppBar position="static">
       <Container maxWidth={'lg'} disableGutters={true}>
         <Toolbar className={classes.toolbar}>
           <Avatar/>
-          {/*  desktop views */}
-          <Tabs classes={{ root: classes.tabs, indicator: classes.tabsIndicator }} value={value} onChange={handleChange} aria-label="navigation">
-            {pages.map(({ name, path }) => (
-              <Tab key={name} component={Link} value={path} to={path} className={classes.tab} label={name} {...a11yProps(0)} />
-            ))}
-          </Tabs>
 
-          <IconButton className={classes.socialIcon} edge="start" color="inherit" aria-label="twitter">
-            <Twitter />
-          </IconButton>
-          <IconButton className={classes.socialIcon} edge="start" color="inherit" aria-label="github">
-            <GitHub />
-          </IconButton>
+          {/*  desktop views */}
+          <Hidden implementation={'css'} className={classes.tabs} smDown>
+            <Tabs classes={{ indicator: classes.tabsIndicator }} value={value} onChange={handleChange} aria-label="navigation">
+              {pages.map(({ name, path, to }) => (
+                <Tab key={name} component={Link} value={path} to={to} className={classes.tab} label={name} {...a11yProps(0)} />
+              ))}
+            </Tabs>
+          </Hidden>
+
+          <Hidden implementation={'css'} smDown>
+            <IconButton edge="start" color="inherit" aria-label="twitter">
+              <Twitter />
+            </IconButton>
+            <IconButton edge="start" color="inherit" aria-label="github">
+              <GitHub />
+            </IconButton>
+          </Hidden>
 
           {/* mobile views */}
-          <IconButton edge="start" className={classes.menuButton} onClick={() => setDrawerOpen(true)} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Drawer classes={{ paper: classes.drawer }} anchor={'right'} open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-            <List>
+          <Hidden implementation={'css'} smUp>
+            <IconButton edge="start" className={classes.menuButton} onClick={() => setDrawerOpen(true)} color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton>
+            <Drawer classes={{ paper: classes.drawer }} anchor={'right'} open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+              <List>
 
-              {pages.map(({ name, path }) => (
-                <ListItemLink key={name} onClick={() => setDrawerOpen(false)} to={path}>
-                  <ListItemText primary={name} />
-                </ListItemLink>
-              ))}
+                {pages.map(({ name, path, to }) => (
+                  <ListItemLink key={name} onClick={() => setDrawerOpen(false)} to={to}>
+                    <ListItemText primary={name} />
+                  </ListItemLink>
+                ))}
 
 
-              <ListItem>
-                <IconButton edge="start" color="inherit" aria-label="twitter">
-                  <Twitter />
-                </IconButton>
-                <IconButton edge="start" color="inherit" aria-label="github">
-                  <GitHub />
-                </IconButton>
-              </ListItem>
-            </List>
-          </Drawer>
+                <ListItem>
+                  <IconButton edge="start" color="inherit" aria-label="twitter">
+                    <Twitter />
+                  </IconButton>
+                  <IconButton edge="start" color="inherit" aria-label="github">
+                    <GitHub />
+                  </IconButton>
+                </ListItem>
+              </List>
+            </Drawer>
+          </Hidden>
 
         </Toolbar>
       </Container>
