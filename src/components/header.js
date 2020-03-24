@@ -69,6 +69,16 @@ const ListItemLink = (props) => {
 };
 
 
+const pages = [
+  { name: 'Home', path: '/' },
+  { name: 'Projects', path: '/projects/' },
+  { name: 'Dev Stuff', path: '/dev-stuff/' },
+  { name: 'Reading', path: '/reading/' },
+  { name: 'Listening', path: '/listening/' },
+  { name: 'Essentials', path: '/essentials/' }
+];
+
+
 const Header = (props) => {
   const classes = useStyles();
 
@@ -90,8 +100,9 @@ const Header = (props) => {
           <Avatar/>
           {/*  desktop views */}
           <Tabs classes={{ root: classes.tabs, indicator: classes.tabsIndicator }} value={value} onChange={handleChange} aria-label="navigation">
-            <Tab component={Link} value={'/'} to={'/'} className={classes.tab} label={'Home'} {...a11yProps(0)} />
-            <Tab component={Link} value={'/page-2/'} to={'/page-2'} className={classes.tab} label={'Page 2'} {...a11yProps(1)} />
+            {pages.map(({ name, path }) => (
+              <Tab key={name} component={Link} value={path} to={path} className={classes.tab} label={name} {...a11yProps(0)} />
+            ))}
           </Tabs>
 
           <IconButton className={classes.socialIcon} edge="start" color="inherit" aria-label="twitter">
@@ -107,12 +118,14 @@ const Header = (props) => {
           </IconButton>
           <Drawer classes={{ paper: classes.drawer }} anchor={'right'} open={drawerOpen} onClose={() => setDrawerOpen(false)}>
             <List>
-              <ListItemLink onClick={() => setDrawerOpen(false)} to={'/'}>
-                <ListItemText primary="Home" />
-              </ListItemLink>
-              <ListItemLink onClick={() => setDrawerOpen(false)} to={'/page-2'}>
-                <ListItemText primary="Page 2" />
-              </ListItemLink>
+
+              {pages.map(({ name, path }) => (
+                <ListItemLink key={name} onClick={() => setDrawerOpen(false)} to={path}>
+                  <ListItemText primary={name} />
+                </ListItemLink>
+              ))}
+
+
               <ListItem>
                 <IconButton edge="start" color="inherit" aria-label="twitter">
                   <Twitter />
