@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from '../header';
-import './layout.css';
-
 
 const Layout = ({ children, ...props }) => {
   const data = useStaticQuery(graphql`
@@ -19,6 +19,7 @@ const Layout = ({ children, ...props }) => {
 
   return (
     <>
+      <CssBaseline />
       <Header {...props}/>
 
       {children}

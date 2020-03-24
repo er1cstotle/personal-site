@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { useTheme, makeStyles } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React, { useState, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { Link } from 'gatsby';
 import { grey, yellow } from '@material-ui/core/colors';
@@ -65,25 +64,28 @@ function a11yProps(index) {
   };
 }
 
+const ListItemLink = (props) => {
+  return <ListItem button component={Link} {...props} />;
+};
+
+
 const Header = (props) => {
   const classes = useStyles();
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('sm'));
 
-  const [value, setValue] = useState(props.path);
+  const [value, setValue] = useState('/');
   const [drawerOpen, setDrawerOpen] = React.useState(null);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const ListItemLink = (props) => {
-    return <ListItem button component={Link} {...props} />;
-  };
+  useEffect(() => {
+    setValue(props.path);
+  });
 
   return (
     <AppBar position="static" className={classes.appBar}>
-      <Container maxWidth={isDesktop ? 'lg' : false} disableGutters={!isDesktop}>
+      <Container maxWidth={'lg'} disableGutters={true}>
         <Toolbar className={classes.toolbar}>
           <Avatar/>
           {/*  desktop views */}
