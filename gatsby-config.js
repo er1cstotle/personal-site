@@ -2,9 +2,9 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
-    description: 'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@gatsbyjs'
+    title: 'Eric Leong',
+    description: 'Me, Myself and I',
+    author: 'Eric Leong'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -37,8 +37,12 @@ module.exports = {
         src: path.join(__dirname, 'src'),
         pages: path.join(__dirname, 'src/pages')
       }
-    },
-    'gatsby-plugin-transition-link'
+    }
+    //
+    // https://github.com/TylerBarnes/gatsby-plugin-transition-link/issues/29
+    // this added an extra scroll bar to all packages
+    // 'gatsby-plugin-transition-link'
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
