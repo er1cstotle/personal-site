@@ -1,21 +1,10 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-
-import { Button, Container, Grid, Paper } from '@material-ui/core';
-import { Link } from 'gatsby';
-
-
-import Image from 'components/image';
+import { Container, Grid, Paper } from '@material-ui/core';
 import SEO from 'components/seo';
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    paddingTop: 48,
-    [theme.breakpoints.up('sm')]: {
-      minHeight: 64
-    }
-  },
   paper: {
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -23,28 +12,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const IndexPage = (props) => {
+const ListeningPage = (props) => {
   const classes = useStyles();
 
   return (
-    <Container className={classes.container} maxWidth={'md'}>
+    <Container maxWidth={'md'}>
       <SEO title="Home" />
 
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=12</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=12 sm=6</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=12 sm=6</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=6 sm=3</Paper>
+          <iframe src="https://open.spotify.com/embed/playlist/6QD1KeDDPSNxEr6tPNvb0m" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </Grid>
         <Grid item xs={6} sm={3}>
           <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=6 sm=3</Paper>
@@ -53,16 +30,9 @@ const IndexPage = (props) => {
           <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=6 sm=3</Paper>
         </Grid>
       </Grid>
-
-
-      <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-        <Image />
-      </div>
-
-      <Link to="/page-2/">Go to page 2</Link>
     </Container>
   );
 
 };
 
-export default IndexPage;
+export default ListeningPage;
