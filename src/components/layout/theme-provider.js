@@ -4,14 +4,7 @@ import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { blue, grey, yellow } from '@material-ui/core/colors';
 
-// [breakpoints.up('md')]: {
-//   minWidth: '200px',
-//   backgroundColor: 'yellow',
-// },
 const breakpoints = createBreakpoints({});
-
-console.log(breakpoints.up('md'));
-
 
 const theme = createMuiTheme({
   palette: {
@@ -31,13 +24,23 @@ const theme = createMuiTheme({
     MuiContainer: {
       root: {
         paddingTop: 84,
+        paddingBottom: 84,
         [breakpoints.up('md')]: {
           paddingTop: 108
         }
       }
+    },
+    MuiTypography:{
+      h1: {
+        fontSize: 64
+      }
     }
   },
   props: {
+    MuiPaper: {
+      elevation: 0,
+      square: true
+    }
   }
 });
 

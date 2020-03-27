@@ -24,15 +24,15 @@ const DevStuffPage = (props) => {
 
 
         <Grid item xs={12} sm={8}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>
+          <Paper variant={'outlined'} className={classes.paper}>
             <Gist id='47ab2068d2d0839d981080267c3fdbfb' />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=12 sm=6</Paper>
+          <Paper variant={'outlined'} className={classes.paper}>xs=12 sm=6</Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=12 sm=6</Paper>
+          <Paper variant={'outlined'} className={classes.paper}>xs=12 sm=6</Paper>
         </Grid>
 
       </Grid>

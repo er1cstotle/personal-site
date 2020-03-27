@@ -22,13 +22,13 @@ const ProjectsPage = (props) => {
 
       <Grid container justify={'space-evenly'} spacing={3}>
         <Grid item xs={6} sm={3}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>Hi</Paper>
+          <Paper variant={'outlined'} className={classes.paper}>Hi</Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>Hi</Paper>
+          <Paper variant={'outlined'} className={classes.paper}>Hi</Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>Hi</Paper>
+          <Paper variant={'outlined'} className={classes.paper}>Hi</Paper>
         </Grid>
 
       </Grid>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Button, Container, Divider, Grid, List, ListItem, ListItemText, ListItemAvatar, Paper, Typography } from '@material-ui/core';
@@ -19,15 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const bookList = [
-  1, 2, 3, 4, 5
-];
-
-const articleList = [
-  1, 2, 3, 4, 5
-];
-
-const ReadingPage = (props) => {
+const ReadingPage = ({ data: { books, articles } }) => {
   const classes = useStyles();
 
   return (
@@ -38,8 +31,8 @@ const ReadingPage = (props) => {
         <Grid item xs={12}>
           <Typography variant={'h3'} color={'textPrimary'}>Books</Typography>
           <List className={classes.root}>
-            {bookList.map(() => (
-              <>
+            {books.nodes.map(({ id }) => (
+              <React.Fragment key={id}>
                 <ListItem alignItems="center">
                   <ListItemAvatar>
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
@@ -64,7 +57,7 @@ const ReadingPage = (props) => {
                 </ListItem>
                 <Divider component="li" />
 
-              </>
+              </React.Fragment>
             ))}
           </List>
         </Grid>
@@ -74,8 +67,8 @@ const ReadingPage = (props) => {
 
           <Typography variant={'h3'} color={'textPrimary'}>Articles</Typography>
           <List className={classes.root}>
-            {articleList.map(() => (
-              <>
+            {articles.nodes.map(({ id }) => (
+              <React.Fragment key={id}>
                 <ListItem alignItems="center">
                   <ListItemAvatar>
                     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
@@ -99,7 +92,7 @@ const ReadingPage = (props) => {
                   <Button variant="contained" color={'primary'}>Test</Button>
                 </ListItem>
                 <Divider component="li" />
-              </>
+              </React.Fragment>
             ))}
           </List>
         </Grid>
@@ -110,5 +103,20 @@ const ReadingPage = (props) => {
   );
 
 };
+
+export const data = graphql`
+    query {
+      books: allBooksJson {
+        nodes {
+          id
+        }
+      }
+      articles: allArticlesJson {
+        nodes {
+          id
+        }
+      }
+    }
+  `;
 
 export default ReadingPage;

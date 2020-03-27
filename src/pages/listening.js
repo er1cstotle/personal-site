@@ -24,10 +24,10 @@ const ListeningPage = (props) => {
           <iframe src="https://open.spotify.com/embed/playlist/6QD1KeDDPSNxEr6tPNvb0m" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=6 sm=3</Paper>
+          <Paper variant={'outlined'} className={classes.paper}>xs=6 sm=3</Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper variant={'outlined'} square elevation={0} className={classes.paper}>xs=6 sm=3</Paper>
+          <Paper variant={'outlined'} className={classes.paper}>xs=6 sm=3</Paper>
         </Grid>
       </Grid>
     </Container>
