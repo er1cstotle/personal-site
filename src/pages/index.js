@@ -3,15 +3,20 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grow, Grid, Paper, Typography } from '@material-ui/core';
 
-import Bbt from 'components/bbt';
+import Yoga from 'components/images/yoga';
+import Bbt from 'components/images/bbt';
+import Books from 'components/images/book';
 import SEO from 'components/seo';
 
 const useStyles = makeStyles(theme => ({
-  paper: {
+  header: {
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
-    display: 'flex',
-    alignItems: 'center'
+    textAlign: 'center'
+  },
+  image: {
+    borderRadius: '100%',
+    overflow: 'hidden'
   }
 }));
 
@@ -22,26 +27,44 @@ const IndexPage = (props) => {
     <Container maxWidth={'md'}>
       <SEO title="Eric Leong" />
 
-      <Grid container spacing={3}>
-
-        <Grid item xs={12} >
+      <Grid>
+        <Grid item xs={12}>
           <Grow in timeout={700}>
-            <Paper variant={'outlined'} className={classes.paper}>
-
-              <div style={{ width: 200, display: 'inline-block' }}>
-                <Bbt/>
-              </div>
-
-              <div style={{ display: 'inline-flex', flexDirection: 'column' }}>
-                <Typography variant={'h1'} align={'left'} color={'textPrimary'}>Eric Leong</Typography>
-                <Typography variant={'h4'} align={'left'} color={'textPrimary'}>I am a software developer</Typography>
-                <Typography variant={'body1'} align={'left'} color={'textPrimary'}>Lorem ipsum</Typography>
-              </div>
-
+            <Paper className={classes.header}>
+              <Typography variant={'h1'} color={'textPrimary'}>Eric Leong</Typography>
+              <Typography variant={'h4'} color={'textPrimary'}>Software developer</Typography>
+              <Typography variant={'body1'} color={'textPrimary'}>Lorem ipsum</Typography>
             </Paper>
           </Grow>
         </Grid>
       </Grid>
+
+
+      <Grid container alignItems={'flex-end'} justify={'center'} spacing={5}>
+
+        <Grid item xs={2}>
+          <Grow in timeout={700}>
+            <Paper className={classes.image}>
+              <Bbt/>
+            </Paper>
+          </Grow>
+        </Grid>
+        <Grid item xs={2}>
+          <Grow in timeout={700}>
+            <Paper className={classes.image}>
+              <Yoga/>
+            </Paper>
+          </Grow>
+        </Grid>
+        <Grid item xs={2}>
+          <Grow in timeout={700}>
+            <Paper className={classes.image}>
+              <Books/>
+            </Paper>
+          </Grow>
+        </Grid>
+      </Grid>
+
 
     </Container>
   );

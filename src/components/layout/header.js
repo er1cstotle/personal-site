@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Link } from 'gatsby';
 
-import Avatar from 'components/avatar';
+import Avatar from 'components/images/avatar';
 import { AppBar, Container, Drawer, Hidden, IconButton, List, ListItem, ListItemText, Tab, Tabs, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import GitHub from '@material-ui/icons/GitHub';

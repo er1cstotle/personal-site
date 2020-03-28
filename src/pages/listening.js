@@ -1,14 +1,13 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Grid, Paper } from '@material-ui/core';
+import { Container, Grid, Grow } from '@material-ui/core';
 import SEO from 'components/seo';
 
 const useStyles = makeStyles(theme => ({
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary
+  root: {
+    // can I create a theme value for 172 bases on the header, footer etc???
+    height: 'calc(100vh - 172px)'
   }
 }));
 
@@ -19,15 +18,11 @@ const ListeningPage = (props) => {
     <Container maxWidth={'md'}>
       <SEO title="Home" />
 
-      <Grid container spacing={3}>
+      <Grid container className={classes.root} spacing={3}>
         <Grid item xs={12}>
-          <iframe src="https://open.spotify.com/embed/playlist/6QD1KeDDPSNxEr6tPNvb0m" width="100%" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper variant={'outlined'} className={classes.paper}>xs=6 sm=3</Paper>
-        </Grid>
-        <Grid item xs={6} sm={3}>
-          <Paper variant={'outlined'} className={classes.paper}>xs=6 sm=3</Paper>
+          <Grow in timeout={2000}>
+            <iframe src="https://open.spotify.com/embed/playlist/6QD1KeDDPSNxEr6tPNvb0m" width="100%" height="100%" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </Grow>
         </Grid>
       </Grid>
     </Container>

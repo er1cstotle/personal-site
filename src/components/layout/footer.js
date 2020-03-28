@@ -25,7 +25,7 @@ const Footer = (props) => {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} elevation={0}>
+    <Paper className={classes.root} square>
       <Typography>
 
         hi

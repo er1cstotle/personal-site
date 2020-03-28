@@ -38,8 +38,7 @@ const theme = createMuiTheme({
   },
   props: {
     MuiPaper: {
-      elevation: 0,
-      square: true
+      elevation: 0
     }
   }
 });
