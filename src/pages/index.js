@@ -32,7 +32,7 @@ const IndexPage = (props) => {
           <Grow in timeout={700}>
             <Paper className={classes.header}>
               <Typography variant={'h1'} color={'textPrimary'}>Eric Leong</Typography>
-              <Typography variant={'h4'} color={'textPrimary'}>Software developer</Typography>
+              <Typography variant={'h4'} color={'textPrimary'}>So Called "Web Developer"</Typography>
               <Typography variant={'body1'} color={'textPrimary'}>Lorem ipsum</Typography>
             </Paper>
           </Grow>
